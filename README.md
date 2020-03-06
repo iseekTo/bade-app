@@ -1,2 +1,3 @@
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 # bade-app
-后台增删改查——React技术栈
