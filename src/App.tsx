@@ -4,7 +4,7 @@ import './App.css';
 import axios from 'axios'
 
 const ax = axios.create()
-const baseUrl = 'http://localhost:10101'
+const baseUrl = 'https://api.weimou.info'
 
 interface fruitStateType {
     title: string
@@ -25,7 +25,7 @@ function App() {
         commit.status === 200 && message.success('新增成功！', 2)
         console.log(commit.data, '提交结果')
     }
-
+    
 
     return (
         <div className="App">
