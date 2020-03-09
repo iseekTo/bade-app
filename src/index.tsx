@@ -8,12 +8,12 @@ declare const module: any;
 
 const render = () => {
     ReactDOM.render(
-        <HashRouter>
-            <App />
-        </HashRouter>,
-        // <BrowserRouter>
+        // <HashRouter>
         //     <App />
-        // </BrowserRouter>,
+        // </HashRouter>,
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>,
         document.getElementById('root')
     )
 }
