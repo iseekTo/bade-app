@@ -18,18 +18,29 @@ const handleFruit = (body: fruitStateType) => ax.post(`${baseUrl}/fruits/create_
 function App() {
     const [title, setTitle] = useState<string>('')
     const [price, setPrice] = useState<number | string>('')
+    const [loading, setLoading] = useState<boolean>(false)
 
     
+    const cleanFruitInput = () => {
+        setTitle('')
+        setPrice('')
+    }
+
     const submit = async () => {
+        setLoading(true)
         let commit = await handleFruit({ title, price, })
-        commit.status === 200 && message.success('新增成功！', 2)
-        console.log(commit.data, '提交结果')
+        if (commit.status === 200) {
+            setLoading(false)
+            message.success('新增成功！', 2)
+            cleanFruitInput()
+            console.log(commit.data, '提交结果')
+        }
     }
     
 
     return (
         <div className="App">
-            <h1 style={{ marginTop: '50px' }}>后台管理</h1>
+            <h1 style={{ marginTop: '50px' }}>back manage</h1>
             <Input
                 type='text'
                 value={title}
@@ -48,7 +59,14 @@ function App() {
                 style={{ width: '200px' }}
             />
             
-            <Button type="primary" disabled={!title || !price} onClick={submit}>新增水果</Button>
+            <Button 
+                type="primary" 
+                disabled={!title || !price} 
+                onClick={submit}
+                loading={loading}
+            >
+                新增水果
+            </Button>
         </div>
     );
 }
