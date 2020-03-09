@@ -3,6 +3,8 @@ import { Button, message, Input } from 'antd'
 import { addFruit } from '../api/fruit'
 
 
+
+
 const Fruit = () => {
     const [title, setTitle] = useState<string>('')
     const [price, setPrice] = useState<number | string>('')
@@ -28,8 +30,7 @@ const Fruit = () => {
     
 
     return (
-        <div className="App">
-
+        <>
             <h1 style={{ marginTop: '50px' }}>back manage</h1>
             <Input
                 type='text'
@@ -57,7 +58,7 @@ const Fruit = () => {
             >
                 新增水果
             </Button>
-        </div>
+        </>
     )
 }
 

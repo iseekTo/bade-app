@@ -1,19 +1,11 @@
-import React, { useState } from 'react'
-// import { Spin } from 'antd';
+import React from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import routes from './route'
 
 
 // render routes
 const RenderRoutes = () => {
-    const [load, setLoad] = useState<boolean>(true)
-
-    // useEffect(() => {
-    //     setLoad(false)
-
-    //     return () => setLoad(false)
-    // }, [])
-
+    
     return (
         <>
             <Switch>

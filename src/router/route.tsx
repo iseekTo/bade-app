@@ -1,9 +1,10 @@
-// import ReactLoadable from 'react-loadable'
+import ReactLoadable from 'react-loadable'
+import RouterLoadingComponent from '../components/RouterLoadingComponent'
 
+const HomeLoadable = ReactLoadable({ loader: () => import('../App'), loading: RouterLoadingComponent })
+const Fruit = ReactLoadable({ loader: () => import('../pages/Fruit'), loading: RouterLoadingComponent })
+const NotFound = ReactLoadable({ loader: () => import('../pages/NotFound'), loading: RouterLoadingComponent })
 
-import Home from '../App'
-import Fruit from '../pages/Fruit'
-import NotFound from '../pages/NotFound'
 
 type route = {
     path: string
@@ -14,7 +15,7 @@ type route = {
 type routeType = Array<route>
 
 const routes: routeType = [
-    { path: '/', exact: true, component: Home },
+    { path: '/', exact: true, component: HomeLoadable },
     { path: '/notFound', exact: true, component: NotFound },
     { path: '/fruit', exact: true, component: Fruit },
     /** todo... */
