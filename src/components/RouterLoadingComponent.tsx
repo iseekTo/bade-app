@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Spin } from 'antd';
 
 
@@ -15,7 +15,7 @@ const loadStyle: React.CSSProperties = {
 }
 
 const RouterLoadingComponent = ({ isLoading = true, error }: loadingProps) => {
-    const [loading, setLoading] = useState(isLoading)
+    const [, setLoading] = useState(isLoading)
 
 
     useEffect(() => {
