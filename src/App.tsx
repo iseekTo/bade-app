@@ -1,67 +1,21 @@
-import React, { useState } from 'react';
-import { Button, message, Input } from 'antd'
-import { addFruit } from './api/fruit'
+import React from 'react';
+import { useHistory } from 'react-router'
 import './App.css';
 
 
-
-
-
 function App() {
-    const [title, setTitle] = useState<string>('')
-    const [price, setPrice] = useState<number | string>('')
-    const [loading, setLoading] = useState<boolean>(false)
+    const history = useHistory()
 
-    
-    const cleanFruitInput = () => {
-        setTitle('')
-        setPrice('')
+    const onJumpClick = () => {
+        history.push(`/fruit`)
     }
 
-    const submit = async () => {
-        setLoading(true)
-        let commit = await addFruit({ title, price, })
-        console.log(commit, 'eeee');
-        
-        if (commit !== null) {
-            setLoading(false)
-            message.success('新增成功！', 2)
-            cleanFruitInput()
-        }
-    }
-    
 
     return (
-        <div className="App">
-            <h1 style={{ marginTop: '50px' }}>back manage</h1>
-            <Input
-                type='text'
-                value={title}
-                placeholder='水果名称'
-                onChange={e => setTitle(e.target.value)}
-                style={{ width: '200px' }}
-            />
-
-            <Input
-                type='number'
-                prefix='￥'
-                suffix='RMB'
-                value={price}
-                placeholder={`${title || '水果'}价格`}
-                onChange={e => setPrice(e.target.value)}
-                style={{ width: '200px' }}
-            />
-            
-            <Button 
-                type="primary" 
-                disabled={!title || !price} 
-                onClick={submit}
-                loading={loading}
-            >
-                新增水果
-            </Button>
-        </div>
-    );
+        <>
+            <h3 onClick={onJumpClick}>fruit</h3>
+        </>
+    )
 }
 
 export default App;

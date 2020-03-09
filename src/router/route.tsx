@@ -1,5 +1,8 @@
-import ReactLoadable from 'react-loadable'
+// import ReactLoadable from 'react-loadable'
 
+
+import Home from '../App'
+import Fruit from '../pages/Fruit'
 import NotFound from '../pages/NotFound'
 
 type route = {
@@ -11,7 +14,9 @@ type route = {
 type routeType = Array<route>
 
 const routes: routeType = [
-    { path: '/NotFound', exact: true, component: NotFound }
+    { path: '/', exact: true, component: Home },
+    { path: '/notFound', exact: true, component: NotFound },
+    { path: '/fruit', exact: true, component: Fruit },
     /** todo... */
 ]
 
