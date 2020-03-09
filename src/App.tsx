@@ -4,10 +4,7 @@ import { addFruit } from './api/fruit'
 import './App.css';
 
 
-interface fruitStateType {
-    title: string
-    price: number | string
-}
+
 
 
 function App() {
