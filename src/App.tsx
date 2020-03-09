@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
 import { Button, message, Input } from 'antd'
+import { addFruit } from './api/fruit'
 import './App.css';
-import axios from 'axios'
 
-const ax = axios.create()
-const baseUrl = 'https://api.weimou.info'
 
 interface fruitStateType {
     title: string
     price: number | string
 }
-
-const handleFruit = (body: fruitStateType) => ax.post(`${baseUrl}/fruits/create_fruit`, body)
-// const getOneFruit = (id: string) => ax.get(`${baseUrl}/fruits/${id}`)
 
 
 function App() {
@@ -28,12 +23,13 @@ function App() {
 
     const submit = async () => {
         setLoading(true)
-        let commit = await handleFruit({ title, price, })
-        if (commit.status === 200) {
+        let commit = await addFruit({ title, price, })
+        console.log(commit, 'eeee');
+        
+        if (commit !== null) {
             setLoading(false)
             message.success('新增成功！', 2)
             cleanFruitInput()
-            console.log(commit.data, '提交结果')
         }
     }
     
