@@ -1,15 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
-import App from './router/index';
+import Routes from './router/index'
+import Menu from './pages/Menu'
 
-
-declare const module: any;
+declare const module: any
 
 const render = () => {
     ReactDOM.render(
         <BrowserRouter>
-            <App />
+            <Menu />
+            <Routes />
         </BrowserRouter>,
         document.getElementById('root')
     )
@@ -19,7 +20,7 @@ render()
 
 
 if (module.hot) {
-    module.hot.accept('./App', () => {
+    module.hot.accept('./router/index', () => {
         render()
     })
 }

@@ -7,7 +7,7 @@ import routes from './route'
 const RenderRoutes = () => {
     
     return (
-        <>
+        <div>
             <Switch>
                 {routes.map(route => (
                     <Route
@@ -22,7 +22,7 @@ const RenderRoutes = () => {
                     <Redirect to='/NotFound'></Redirect>
                 </Route>
             </Switch>
-        </>
+        </div>
     )
 }
 
