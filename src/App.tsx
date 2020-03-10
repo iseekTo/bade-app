@@ -1,21 +1,15 @@
 import React from 'react';
- // eslint-disable-next-line
-import { useHistory } from 'react-router'
-import './App.css';
+import Routes from './router/index'
+import './assets/App.css';
 
 
 function App() {
-    // const history = useHistory()
-
-    // const onJumpClick = () => {
-    //     history.push(`/fruit`)
-    // }
-
 
     return (
         <>
+            <Routes />
         </>
     )
 }
 
-export default App;
+export default App

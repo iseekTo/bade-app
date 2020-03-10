@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import { Menu } from 'antd'
 import { ClickParam } from 'antd/lib/menu'
 import { useHistory } from 'react-router'
-import '../assets/menu.css'
+
+import routes from '../../router/route'
+import '../../assets/menu.css'
 // import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons'
 
 const { SubMenu } = Menu 
 const menuStyle: React.CSSProperties = {
     height: '100vh',
-   
 }
 
 const MenuWall = () => {
