@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
-import { Menu } from 'antd'
-import { ClickParam } from 'antd/lib/menu'
+import { Layout, Menu } from 'antd'
 import { useHistory } from 'react-router'
+import { Link } from 'react-router-dom';
 
-import routes from '../../router/route'
+
+import menuRoute from '../../util/menu'
 import '../../assets/menu.css'
+import ArrayMenuType from '../../types/menu.type';
 // import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons'
 
-const { SubMenu } = Menu 
-const menuStyle: React.CSSProperties = {
-    height: '100vh',
-}
+
+const { SubMenu } = Menu
+const { Sider } = Layout;
+
 
 const MenuWall = () => {
     const subKeys: string[] = ['sub_one', 'sub_two', 'sub_three']
@@ -27,46 +29,56 @@ const MenuWall = () => {
         }
     }
 
-    const onClickToRoute = ({ key }: Pick<ClickParam, 'key'>) => {
-        history.push(key)
+
+    const repeatMenu = (menuRoute: ArrayMenuType) => {
+        return menuRoute.map(({ path, title, children, icon }) => {
+            if (children) {
+                return (
+                    // 可加入鉴权，丢失token或者未存在用户信息不可访问
+                    <SubMenu
+                        key={path}
+                        title={
+                            <span>
+                                {/* render icon here  <MailOutlined /> */}
+                                <span>{title}</span>
+                            </span>
+                        }
+                    >
+                        {repeatMenu(children)}
+                    </SubMenu>
+                )
+            }
+            return (
+                // 可加入鉴权，丢失token或者未存在用户信息不可访问
+                <Menu.Item key={path}>
+                    <Link to={path} >
+                        {/* render icon here  <MailOutlined /> */}
+                        <span>{title}</span>
+                    </Link>
+                </Menu.Item>
+            )
+        })
     }
 
+
+    const { pathname } = history.location
+    const menuOpened = `/${pathname.split('/')[1]}`;
+
     return (
-        <div className='menu-box'>
+        <Sider width={256} className="site-layout-background">
             <Menu
                 mode="inline"
                 openKeys={openKeys}
                 onOpenChange={onOpenChange}
-                style={menuStyle}
+                style={{ width: 256, height: '100vh' }}
+                defaultOpenKeys={[menuOpened]}
+                defaultSelectedKeys={[pathname]}
             >
-                <SubMenu
-                    key="sub_one"
-                    title={
-                        <span>
-                            {/* <MailOutlined /> */}
-                            <span>Fruit MM</span>
-                        </span>
-                    }
-                >
-                    <Menu.Item key="fruit" onClick={onClickToRoute}>Add Fruit</Menu.Item>
-                    <Menu.Item key="2">Fruit List</Menu.Item>
-                </SubMenu>
-
-                <SubMenu
-                    key="sub_two"
-                    title={
-                        <span>
-                            {/* <AppstoreOutlined /> */}
-                            <span>Other Page</span>
-                        </span>
-                    }
-                >
-                    <Menu.Item key="3">O-MM</Menu.Item>
-                    <Menu.Item key="4">L-MM</Menu.Item>
-                </SubMenu>
-
+                {
+                    repeatMenu(menuRoute)
+                }
             </Menu>
-        </div>
+        </Sider>
     )
 }
 

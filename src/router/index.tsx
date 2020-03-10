@@ -1,28 +1,21 @@
 import React from 'react'
-import { Route, Switch, Redirect } from 'react-router-dom'
-import routes from './route'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
+import Auth from '../pages/Auth'
+import Login from '../pages/Login'
+import Index from '../pages/home/Index'
 
 
 // render routes
 const RenderRoutes = () => {
     
     return (
-        <div>
+        <BrowserRouter>
             <Switch>
-                {routes.map(route => (
-                    <Route
-                        key={route.path}
-                        path={route.path}
-                        exact={route.exact}
-                        component={route.component}
-                    />
-                ))}
-
-                <Route>
-                    <Redirect to='/NotFound'></Redirect>
-                </Route>
+				<Route component={Login} exact path="/login" />
+                <Auth path='/' Component={Index} />
             </Switch>
-        </div>
+        </BrowserRouter>
     )
 }
 

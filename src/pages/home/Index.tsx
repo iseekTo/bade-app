@@ -1,18 +1,18 @@
 import React from 'react'
-import { Layout, Breadcrumb } from 'antd'
-import Menu from './Menu'
+import { Layout } from 'antd'
 
-// import Routes from '../router/index'
+import { Header as HeaderWall, Menu, Content } from '../../pages/home/ExportTsx'
 
-const { Header, Content, Sider } = Layout
 
 //-- Index --
 const Home = () => {
 
     return (
-        <Layout>
+        <Layout style={{ minHeight: '100vh' }}>
+            <HeaderWall />
             <Layout>
                 <Menu />
+                <Content />
             </Layout>
 
         </Layout>
