@@ -1,33 +1,27 @@
-import React, { useState } from 'react'
-import { Layout, Menu } from 'antd'
+import React from 'react'
 import { useHistory } from 'react-router'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+
+import { Layout, Menu } from 'antd'
+import { createFromIconfontCN } from '@ant-design/icons'
 
 
 import menuRoute from '../../util/menu'
 import '../../assets/menu.css'
-import ArrayMenuType from '../../types/menu.type';
-// import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons'
+import ArrayMenuType from '../../types/menu.type'
 
 
 const { SubMenu } = Menu
-const { Sider } = Layout;
+const { Sider } = Layout
+
+// iconfront图标库里的icon
+const IconFront = createFromIconfontCN({
+    scriptUrl: '//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js'
+})
 
 
 const MenuWall = () => {
-    const subKeys: string[] = ['sub_one', 'sub_two', 'sub_three']
     const history = useHistory()
-    const [openKeys, setOpenKeys] = useState<string[]>(['sub_one'])
-
-
-    const onOpenChange = (keys: string[]) => {
-        const lastOpenKey: any = keys.find((key: string) => !openKeys.includes(key))
-        if (!subKeys.includes(lastOpenKey)) {
-            setOpenKeys(keys)
-        } else {
-            setOpenKeys([lastOpenKey] || [])
-        }
-    }
 
 
     const repeatMenu = (menuRoute: ArrayMenuType) => {
@@ -39,7 +33,7 @@ const MenuWall = () => {
                         key={path}
                         title={
                             <span>
-                                {/* render icon here  <MailOutlined /> */}
+                                {icon || ''}
                                 <span>{title}</span>
                             </span>
                         }
@@ -52,7 +46,7 @@ const MenuWall = () => {
                 // 可加入鉴权，丢失token或者未存在用户信息不可访问
                 <Menu.Item key={path}>
                     <Link to={path} >
-                        {/* render icon here  <MailOutlined /> */}
+                        {icon || ''}
                         <span>{title}</span>
                     </Link>
                 </Menu.Item>
@@ -68,15 +62,11 @@ const MenuWall = () => {
         <Sider width={256} className="site-layout-background">
             <Menu
                 mode="inline"
-                openKeys={openKeys}
-                onOpenChange={onOpenChange}
                 style={{ width: 256, height: '100vh' }}
                 defaultOpenKeys={[menuOpened]}
                 defaultSelectedKeys={[pathname]}
             >
-                {
-                    repeatMenu(menuRoute)
-                }
+                {repeatMenu(menuRoute)}
             </Menu>
         </Sider>
     )

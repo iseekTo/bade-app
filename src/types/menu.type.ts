@@ -9,7 +9,7 @@ export type i_menuType = {
     path: string
     title: string
     children?: i_menuType[]
-    icon?: string | React.ReactNode
+    icon?: React.ReactNode
 }
 
 declare type ArrayMenuType = Array<i_menuType>
