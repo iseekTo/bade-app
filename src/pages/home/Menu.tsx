@@ -3,8 +3,6 @@ import { useHistory } from 'react-router'
 import { Link } from 'react-router-dom'
 
 import { Layout, Menu } from 'antd'
-import { createFromIconfontCN } from '@ant-design/icons'
-
 
 import menuRoute from '../../util/menu'
 import '../../assets/menu.css'
@@ -13,11 +11,6 @@ import ArrayMenuType from '../../types/menu.type'
 
 const { SubMenu } = Menu
 const { Sider } = Layout
-
-// iconfront图标库里的icon
-const IconFront = createFromIconfontCN({
-    scriptUrl: '//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js'
-})
 
 
 const MenuWall = () => {
