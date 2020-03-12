@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, message, Input } from 'antd'
-import { addFruit } from '../api/fruit'
+import { addFruit } from '../../api/fruit'
+import { useHistory } from 'react-router';
 
 
 
@@ -9,7 +10,7 @@ const Fruit = () => {
     const [title, setTitle] = useState<string>('')
     const [price, setPrice] = useState<number | string>('')
     const [loading, setLoading] = useState<boolean>(false)
-
+    const history = useHistory()
     
     const cleanFruitInput = () => {
         setTitle('')
@@ -24,7 +25,12 @@ const Fruit = () => {
         if (commit !== null) {
             setLoading(false)
             message.success('新增成功！', 2)
-            cleanFruitInput()
+                // @ts-ignore
+                .then(() => {
+                    cleanFruitInput()
+                    history.push('/fruit-list')
+                })
+            
         }
     }
     

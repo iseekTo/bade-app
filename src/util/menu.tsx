@@ -16,8 +16,11 @@ const menuRoute: ArrayMenuType = [
         children: [
             {
                 path: '/fruit',
-                title: 'add fruit',
-                icon: ''
+                title: 'add fruit'
+            },
+            {
+                path: '/fruit-list',
+                title: '水果列表'
             }
         ]
     }
