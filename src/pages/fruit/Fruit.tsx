@@ -28,7 +28,7 @@ const Fruit = () => {
                 // @ts-ignore
                 .then(() => {
                     cleanFruitInput()
-                    history.push('/fruit-list')
+                    history.push('/fruit/list')
                 })
             
         }

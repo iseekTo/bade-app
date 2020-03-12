@@ -15,11 +15,11 @@ const menuRoute: ArrayMenuType = [
         icon: <AppleOutlined />,
         children: [
             {
-                path: '/fruit',
+                path: '/fruit/handle',
                 title: 'add fruit'
             },
             {
-                path: '/fruit-list',
+                path: '/fruit/list',
                 title: '水果列表'
             }
         ]

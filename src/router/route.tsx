@@ -17,10 +17,10 @@ const FruitList = ReactLoadable({ loader: () => import('../pages/fruit/FruitList
 
 const routes: routeType = [
     { path: '/notFound', exact: true, component: NotFound },
-    { path: '/fruit', exact: true, component: Fruit },
+    { path: '/fruit/handle', exact: true, component: Fruit },
     { path: '/login', exact: true, component: Login },
     { path: '/welcome', exact: true, component: Welcome },
-    { path: '/fruit-list', exact: true, component: FruitList }
+    { path: '/fruit/list', exact: true, component: FruitList }
 
     
 ]

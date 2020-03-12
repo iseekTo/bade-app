@@ -58,6 +58,7 @@ const MenuWall = () => {
                 style={{ width: 256, height: '100vh' }}
                 defaultOpenKeys={[menuOpened]}
                 defaultSelectedKeys={[pathname]}
+                selectedKeys={[pathname]}
             >
                 {repeatMenu(menuRoute)}
             </Menu>
