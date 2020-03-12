@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
+import { useHistory } from 'react-router'
 import { Button, message, Input } from 'antd'
 import { addFruit } from '../../api/fruit'
-import { useHistory } from 'react-router';
-
+import { inputBoxType } from '../../types/event.type'
 
 
 
@@ -42,7 +42,7 @@ const Fruit = () => {
                 type='text'
                 value={title}
                 placeholder='水果名称'
-                onChange={e => setTitle(e.target.value)}
+                onChange={(e: inputBoxType)=> setTitle(e.target.value)}
                 style={{ width: '200px' }}
             />
 
@@ -52,7 +52,7 @@ const Fruit = () => {
                 suffix='RMB'
                 value={price}
                 placeholder={`${title || '水果'}价格`}
-                onChange={e => setPrice(e.target.value)}
+                onChange={(e: inputBoxType) => setPrice(e.target.value)}
                 style={{ width: '200px' }}
             />
             
