@@ -1,10 +1,10 @@
 import React from 'react'
-
+import '../assets/welcome.less'
 
 const Welcome = () => {
 
     return (
-        <div>
+        <div className='welcome'>
             <p>welcome</p>
         </div>
     )
