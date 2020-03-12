@@ -24,7 +24,7 @@ const Fruit = () => {
         
         if (commit !== null) {
             setLoading(false)
-            message.success('新增成功！', 2)
+            message.success('新增成功！', 1)
                 // @ts-ignore
                 .then(() => {
                     cleanFruitInput()
@@ -34,7 +34,7 @@ const Fruit = () => {
         }
     }
     
-
+    
     return (
         <>
             <h1 style={{ marginTop: '50px' }}>back manage</h1>

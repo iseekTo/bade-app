@@ -16,7 +16,7 @@ const { Sider } = Layout
 const MenuWall = () => {
     const history = useHistory()
 
-
+    
     const repeatMenu = (menuRoute: ArrayMenuType) => {
         return menuRoute.map(({ path, title, children, icon }) => {
             if (children) {
