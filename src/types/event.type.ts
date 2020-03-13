@@ -14,3 +14,9 @@ export type getTypeAllKeys<K> = keyof K
 /** extends other -> event & type */
 export type commonEventType<T> = React.ChangeEvent<T>
 
+/** 通用返回体 */
+export type returnParams<T> = {
+    status: number
+    info: string
+    result: T
+}
