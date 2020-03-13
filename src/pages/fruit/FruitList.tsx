@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Table, message } from 'antd'
 import { fruitList } from '../../api/fruit'
-import { fruitStateType } from '../../types/fruit.type'
-import { returnParams } from '../../types/event.type'
+import { arrayFruitStateKeys } from '../../types/fruit.type'
 
-type appendType = {
-    readonly _id: string
-    readonly key: string
-}
-type fruitsType = Array<fruitStateType & appendType>
 
 
 
 const FruitList = () => {
     const [loading, setLoading] = useState<boolean>(true)
-    const [fruits, setFruits] = useState<fruitsType>(
+    const [fruits, setFruits] = useState<arrayFruitStateKeys>(
         [
             { _id: '', title: '', price: 0, key: '' }
         ]
@@ -37,10 +31,10 @@ const FruitList = () => {
         const fetchList = async () => {
             let { 
                 status, 
-                total, 
                 result, 
-                info 
-            }: returnParams<fruitsType> & { total?: number } 
+                info,
+                total
+            } 
             = await fruitList()
             if (status < 0) {
                 setFruits([])
