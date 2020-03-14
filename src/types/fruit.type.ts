@@ -20,7 +20,7 @@ export interface fruitListType extends Partial<fruitStateType> {
 export type arrayFruitStateKeys = Array<fruitStateType>
 export type appendTotal = interParams<arrayFruitStateKeys> & { 
     readonly total?: number 
-}
+} 
 
 // 导出水果列表返回结构类型<Promise>
 export type fruitPromise = Promise<appendTotal>

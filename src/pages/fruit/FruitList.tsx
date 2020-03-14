@@ -4,8 +4,8 @@ import { fruitList, removeFruit } from '../../api/fruit'
 import { arrayFruitStateKeys, fruitStateType } from '../../types/fruit.type'
 import { ColumnProps } from 'antd/lib/table'
 
-type pl = {
-    price: Pick<fruitStateType, 'price'> & any
+type pl<T = any> = {
+    price: Pick<fruitStateType, 'price'> & T
 }
 
 
