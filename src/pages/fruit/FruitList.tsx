@@ -1,34 +1,46 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Button, Table, message } from 'antd'
-import { fruitList } from '../../api/fruit'
-import { arrayFruitStateKeys } from '../../types/fruit.type'
+import { fruitList, removeFruit } from '../../api/fruit'
+import { arrayFruitStateKeys, fruitStateType } from '../../types/fruit.type'
+import { ColumnProps } from 'antd/lib/table'
 
-
+type pl = {
+    price: Pick<fruitStateType, 'price'> & any
+}
 
 
 const FruitList = () => {
-    const [loading, setLoading] = useState<boolean>(true)
+    // const [loading, setLoading] = useState<boolean>(true)
+    const fruitListRef = useRef<any>()
     const [fruits, setFruits] = useState<arrayFruitStateKeys>(
         [
-            { _id: '', title: '', price: 0, key: '' }
+            { id: '', title: '', price: 0, key: '', create_at: '' }
         ]
     )
 
-    const columns = [
-        { title: 'Id', dataIndex: '_id', key: '_id' },
+    const columns: ColumnProps<fruitStateType>[] = [
+        { title: 'Id', dataIndex: 'id', key: 'id' },
         { title: 'Title', dataIndex: 'title', key: 'title' },
-        { title: 'Price', dataIndex: 'price', key: 'price' },
+        { title: 'Price', dataIndex: 'price', key: 'price', sorter: (a: pl, b: pl) => a.price - b.price },
+        { title: 'CreateAt', dataIndex: 'create_at', key: 'create_at' },
         {
             title: 'Action',
             dataIndex: '',
             key: 'x',
-            render: () => <p>Delete</p>,
-        },
+            render: ({ id }: any) => <p onClick={() => remove(id)}>Delete</p>,
+        }
     ]
+
+    const remove = async (id: number) => {
+        let { status, info } = await removeFruit(id)
+        if (status < 0) return message.warn(info)
+        message.success('删除成功')
+        fruitListRef.current()
+    }
     
 
     useEffect(() => {
-        const fetchList = async () => {
+        fruitListRef.current = async () => {
             let { 
                 status, 
                 result, 
@@ -43,7 +55,7 @@ const FruitList = () => {
             setFruits(result)
         }
 
-        fetchList()
+        fruitListRef.current()
     }, [])
 
     
@@ -62,6 +74,7 @@ const FruitList = () => {
             >
                 search
             </Button>
+
             <Table 
                 columns={columns} 
                 dataSource={fruits} 

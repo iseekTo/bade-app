@@ -100,7 +100,7 @@ class Http {
         return await this.service.get(url, params)
     }
 
-    public async post(url: string, params: any, config?: any) {
+    public async post(url: string, params?: any, config?: any) {
         return await this.service.post(url, params, config)
     }
 }

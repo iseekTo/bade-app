@@ -4,7 +4,7 @@
 
 /** 列表数组对象里的类型 */ 
 export type listKey = {
-    readonly _id: string
+    readonly id: string
     readonly key: string
 }
 
