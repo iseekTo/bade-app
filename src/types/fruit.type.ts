@@ -6,9 +6,10 @@ export interface fruitStateType extends Partial<listKey> {
     price: number | string
     create_at?: string
 }
-// 增删返回体
-export type handleFruit = Promise<interParams<fruitStateType>>
+// 新增 -> result字段选择不给予提示
+export type handleFruit = Promise<interParams<never>>
 
+// 删除 -> 剔除result字段，因为其不存在
 export type removeFruitType<T = symbol> = Promise<Omit<interParams<T>, 'result'>>
 
 // 分页查询参数
@@ -17,11 +18,14 @@ export interface fruitListType extends Partial<fruitStateType> {
     pageSize?: number
 }
 
+// 水果key值组合为 -> [{}]
 export type arrayFruitStateKeys = Array<fruitStateType>
+
+// 增加列表总计数为可读，组成一个返回体
 export type appendTotal = interParams<arrayFruitStateKeys> & { 
     readonly total?: number 
 } 
 
-// 导出水果列表返回结构类型<Promise>
+// 最终，导出水果列表返回结构类型<Promise>
 export type fruitPromise = Promise<appendTotal>
 
