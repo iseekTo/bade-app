@@ -1,3 +1,8 @@
+/**
+ * @created 2020/03/14
+ * @author lyb
+ */
+
 /** Input || textarea -> event & type */
 export type inputBoxType = React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 
