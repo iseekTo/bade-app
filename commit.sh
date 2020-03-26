@@ -2,6 +2,7 @@
 
 # created in 2020/03/21
 # author lyb
+# to docker?
 
 echo 'shell start...'
 
