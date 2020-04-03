@@ -1,5 +1,17 @@
+/*
+ * @Date: 2020-03-09 14:18:43
+ * @Author: lyb
+ * @LastEditors: lyb
+ * @LastEditTime: 2020-04-03 15:11:23
+ */
 import Http from './http'
-import { fruitStateType, fruitListType, fruitPromise, removeFruitType, handleFruit } from '../types/fruit.type'
+import { 
+    fruitStateType, 
+    fruitListType, 
+    fruitPromise, 
+    removeFruitType, 
+    handleFruit 
+} from '../types/fruit.type'
 
 
 // handleFruit
