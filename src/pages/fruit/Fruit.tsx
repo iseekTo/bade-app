@@ -4,9 +4,9 @@ import { Button, message, Input } from 'antd'
 import { addFruit } from '../../api/fruit'
 import { inputBoxType } from '../../types/event.type'
 
-
 // add react-hooks eslint, all！
 const Fruit = () => {
+    
     const [title, setTitle] = useState<string>('')
     const [price, setPrice] = useState<number | string>('')
     const [loading, setLoading] = useState<boolean>(false)
