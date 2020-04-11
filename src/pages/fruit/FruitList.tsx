@@ -45,7 +45,6 @@ const FruitList = () => {
                 status, 
                 result, 
                 info,
-                total
             } 
             = await fruitList()
             if (status < 0) {

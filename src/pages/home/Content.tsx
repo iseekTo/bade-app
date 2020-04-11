@@ -23,7 +23,7 @@ const Contents = () => {
                     routes.map(ele => <Route render={() => <ele.component />} key={ele.path} path={ele.path} />)
                 }
                 <Redirect from="/" exact to="/welcome" />
-                <Redirect to="/NotFound" />
+                <Redirect from="*" exact to="/notFound" />
             </Switch>
         </Content>
     )

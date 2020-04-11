@@ -3,7 +3,8 @@ import React from 'react'
 
 const NotFound = () => {
     const style: React.CSSProperties = {
-        textAlign: 'center'
+        textAlign: 'center',
+        fontSize: '30 px'
     }
     
     return (
