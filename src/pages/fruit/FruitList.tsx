@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Button, Table, message } from 'antd'
+import { LoadingOutlined, SearchOutlined } from '@ant-design/icons';
 import { fruitList, removeFruit } from '../../api/fruit'
 import { arrayFruitStateKeys, fruitStateType } from '../../types/fruit.type'
 import { ColumnProps } from 'antd/lib/table'
@@ -17,6 +18,7 @@ const FruitList = () => {
             { id: '', title: '', price: 0, key: '', create_at: '' }
         ]
     )
+    const [isUpdate, setIsUpdate] = useState<boolean>(false)
 
     const columns: ColumnProps<fruitStateType>[] = [
         { title: 'Id', dataIndex: 'id', key: 'id' },
@@ -41,12 +43,7 @@ const FruitList = () => {
 
     useEffect(() => {
         fruitListRef.current = async () => {
-            let { 
-                status, 
-                result, 
-                info,
-            } 
-            = await fruitList()
+            let { status, result, info } = await fruitList()
             if (status < 0) {
                 setFruits([])
                 return message.error(info)
@@ -60,8 +57,12 @@ const FruitList = () => {
     
 
     const search = () => {
+        setIsUpdate(true)
         console.log('search')
-        
+
+        setTimeout(() => {
+            setIsUpdate(false)
+        }, 1000);
     }
 
     return (
@@ -70,6 +71,7 @@ const FruitList = () => {
                 onClick={search} 
                 type="primary" 
                 style={{ marginBottom: 16 }}
+                icon={ isUpdate ? <LoadingOutlined /> : <SearchOutlined /> }
             >
                 search
             </Button>
