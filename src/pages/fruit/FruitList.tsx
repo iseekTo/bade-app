@@ -3,12 +3,12 @@ import { Button, Table, message } from 'antd'
 import { LoadingOutlined, SearchOutlined } from '@ant-design/icons';
 import { fruitList, removeFruit } from '../../api/fruit'
 import { arrayFruitStateKeys, fruitStateType } from '../../types/fruit.type'
-import { ColumnProps } from 'antd/lib/table'
+import { ColumnsType } from 'antd/lib/table';
 
+// 隐式泛型，避免编译器报错
 type pl<T = any> = {
     price: Pick<fruitStateType, 'price'> & T
 }
-
 
 const FruitList = () => {
     // const [loading, setLoading] = useState<boolean>(true)
@@ -20,7 +20,7 @@ const FruitList = () => {
     )
     const [isUpdate, setIsUpdate] = useState<boolean>(false)
 
-    const columns: ColumnProps<fruitStateType>[] = [
+    const columns: ColumnsType<fruitStateType> = [
         { title: 'Id', dataIndex: 'id', key: 'id' },
         { title: 'Title', dataIndex: 'title', key: 'title' },
         { title: 'Price', dataIndex: 'price', key: 'price', sorter: (a: pl, b: pl) => a.price - b.price },
@@ -69,7 +69,7 @@ const FruitList = () => {
         <>
             <Button 
                 onClick={search} 
-                type="primary" 
+                type='primary' 
                 style={{ marginBottom: 16 }}
                 icon={ isUpdate ? <LoadingOutlined /> : <SearchOutlined /> }
             >
@@ -78,7 +78,7 @@ const FruitList = () => {
 
             <Table 
                 columns={columns} 
-                dataSource={fruits} 
+                dataSource={fruits}
             />
         </>
     )
